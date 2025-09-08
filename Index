@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity: Water — Your Generation Can End the Water Crisis</title>
+  <meta name="description" content="A student-focused Charity: Water landing page that educates, inspires, and converts with authentic stories and clear calls to action." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Proxima Nova is the brand font; if not available, fallback to system sans-serif. -->
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/proxima-nova');
+
+    :root{
+      --cw-yellow:#FFC907;
+      --cw-black:#1A1A1A;
+      --cw-white:#FFF7E1;
+      --text:#141414;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --section:#f8f8f8;
+      --radius:16px;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: 'Proxima Nova', Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:1120px;margin-inline:auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(8px);background:rgba(255,255,255,.8);border-bottom:1px solid #eee}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .drop{width:28px;height:28px;border-radius:50%;background:var(--cw-yellow);box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+    .brand span{font-weight:800;letter-spacing:.2px}
+
+    .menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;border:2px solid #e5e7eb;background:#fff}
+    .menu-toggle span{display:block;width:18px;height:2px;background:#111;position:relative}
+    .menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#111}
+    .menu-toggle span::before{top:-6px}
+    .menu-toggle span::after{top:6px}
+
+    .topnav{display:none;flex-direction:column;gap:12px;align-items:flex-start;width:100%;padding-top:12px}
+    .topnav.open{display:flex}
+
+    .nav a.btn{padding:10px 16px;border-radius:999px;background:var(--cw-yellow);font-weight:700;border:2px solid var(--cw-yellow)}
+    .nav a.btn:hover{filter:brightness(.95)}
+    .nav .ghost{background:transparent;border-color:var(--cw-yellow)}
+
+    @media(min-width:768px){.menu-toggle{display:none}.topnav{display:flex;flex-direction:row;align-items:center;gap:14px;width:auto;padding-top:0}}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero-media{position:relative;height:min(70vh,720px);background:#000;border-bottom:1px solid #eee}
+    .hero-media .media{position:absolute;inset:0;object-fit:cover;opacity:.6}
+    .hero .content{position:relative;margin:-140px auto 0}
+    @media (max-width:768px){.hero .content{margin:-120px auto 0}}
+    .hero-card{background:var(--cw-white);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;max-width:820px;margin:0 auto}
+    .eyebrow{font-size:.85rem;color:var(--muted);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .h1{font-size:clamp(2rem,5vw,3rem);line-height:1.15;margin:8px 0 12px;font-weight:800}
+    .lead{font-size:1.125rem;color:#374151;margin:0 0 18px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:999px;font-weight:800;border:2px solid var(--cw-black)}
+    .btn.primary{background:var(--cw-yellow);border-color:var(--cw-yellow)}
+    .btn.primary:hover{filter:brightness(.95)}
+    .btn.secondary{background:var(--cw-white);border-color:var(--cw-yellow)}
+
+    /* Sections */
+    section{padding:56px 0}
+    .section-alt{background:var(--section)}
+    .grid{display:grid;gap:28px}
+    @media (min-width:900px){.grid.cols-2{grid-template-columns:1.1fr 1fr}}
+
+    h2{font-size:clamp(1.5rem,3.2vw,2.25rem);margin:0 0 10px}
+    p{margin:0 0 12px}
+    .stat{display:flex;align-items:baseline;gap:12px}
+    .stat .num{font-size:2rem;font-weight:800}
+    .muted{color:var(--muted)}
+
+    /* Cards */
+    .cards{display:grid;gap:16px}
+    @media (min-width:800px){.cards{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--cw-white);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 6px;font-size:1.1rem}
+
+    /* Donation */
+    .donate-wrap{background:var(--cw-white);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .amounts{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 16px}
+    .chip{padding:10px 14px;border-radius:999px;border:2px solid #e5e7eb;cursor:pointer}
+    .chip.active{border-color:var(--cw-yellow);background:rgba(255,211,0,.15)}
+    .input-inline{display:flex;gap:10px;flex-wrap:wrap}
+    input[type="number"], input[type="email"]{padding:12px 14px;border-radius:12px;border:1.5px solid #e5e7eb;font-size:1rem;width:220px}
+
+    /* Footer & sticky bar */
+    footer{background:#0f0f0f;color:#d1d5db;padding:28px 0;margin-top:24px}
+    .footer-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+    .tagline{color:#f3f4f6}
+    .sticky-donate{position:sticky;bottom:0;background:rgba(255,211,0,.96);padding:10px;border-top:1px solid rgba(0,0,0,.1);z-index:40}
+    .sticky-donate .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+    /* Accessibility helpers */
+    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header aria-label="Primary">
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Charity: Water home">
+        <span class="drop" aria-hidden="true"></span>
+        <span>charity: water</span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-controls="topnav" aria-expanded="false"><span></span></button>
+      <nav id="topnav" class="topnav" aria-label="Top Navigation">
+        <a class="ghost btn" href="#why">Why Water?</a>
+        <a class="ghost btn" href="#impact">Impact</a>
+        <a class="ghost btn" href="#act">Get Involved</a>
+        <a class="btn" href="#donate">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-media" aria-hidden="true">
+      <!-- Replace with your approved Charity: Water media -->
+      <video class="media" autoplay muted loop playsinline poster="assets/images/hero-poster.jpg" aria-label="Background video showing water access">
+        <source src="assets/videos/hero-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="container content">
+      <div class="hero-card" role="region" aria-labelledby="hero-title">
+        <div class="eyebrow">College Action for Clean Water</div>
+        <h1 id="hero-title" class="h1">Your Generation Can End the Water Crisis.</h1>
+        <p class="lead">703 million people live without clean water. Together, we can change that—starting on your campus.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#donate" aria-label="Donate your coffee money">Donate Your Coffee Money</a>
+          <a class="btn secondary" href="#act" aria-label="Start a campus fundraiser">Start a Campus Fundraiser</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Water -->
+  <section id="why" class="section-alt">
+    <div class="container grid cols-2">
+      <div>
+        <h2>Why Water? Why Now?</h2>
+        <p class="stat"><span class="num">1 in 10</span> <span class="muted">people live without clean water.</span></p>
+        <p class="stat"><span class="num">4×</span> <span class="muted">economic return for every $1 invested in clean water.</span></p>
+        <p>Access to clean water means health, education, and opportunity. Solutions exist—and students like you are powering them.</p>
+      </div>
+      <div>
+        <img src="assets/images/why-water.jpg" alt="Students collaborating at a campus event" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Story -->
+  <section id="impact">
+    <div class="container grid cols-2">
+      <div>
+        <img src="assets/images/impact-story.jpg" alt="Portrait of a girl smiling with a water container" />
+      </div>
+      <div>
+        <h2>Meet Amina: Proof That Change Is Possible</h2>
+        <p>Before clean water, Amina walked 4 miles every day to collect water for her family. Today, she spends that time in school, dreaming of becoming a teacher. Clean water changed her future—and it can change millions more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How You Can Take Action -->
+  <section id="act" class="section-alt">
+    <div class="container">
+      <h2>How You Can Take Action</h2>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <div aria-hidden="true">☕</div>
+          <h3>Donate Your Coffee Money</h3>
+          <p>$5 can give one person clean water.</p>
+          <p><a class="btn primary" href="#donate">Donate Now</a></p>
+        </article>
+        <article class="card" role="listitem">
+          <div aria-hidden="true">🎉</div>
+          <h3>Start a Campus Fundraiser</h3>
+          <p>Turn your passion into real impact.</p>
+          <p><a class="btn secondary" href="#fundraise">Fundraise</a></p>
+        </article>
+        <article class="card" role="listitem">
+          <div aria-hidden="true">✊</div>
+          <h3>Join the Movement</h3>
+          <p>Get updates & volunteer opportunities.</p>
+          <p><a class="btn secondary" href="#signup">Sign Up</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Community Showcase -->
+  <section id="community">
+    <div class="container">
+      <h2>College Students Everywhere Are Taking Action</h2>
+      <p class="muted">Join thousands of students who’ve raised funds for clean water projects. Your voice matters.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:16px">
+        <img src="assets/images/community-1.jpg" alt="Students at a campus booth" />
+        <img src="assets/images/community-2.jpg" alt="Group of students planning an event" />
+        <img src="assets/images/community-3.jpg" alt="Students collaborating and smiling" />
+        <img src="assets/images/community-4.jpg" alt="Student speaker at a campus gathering" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Donation Module -->
+  <section id="donate" class="section-alt">
+    <div class="container">
+      <div class="donate-wrap" role="form" aria-labelledby="donate-title">
+        <h2 id="donate-title">Ready to Change Lives Today?</h2>
+        <div class="amounts" aria-label="Suggested donation amounts">
+          <button class="chip active" data-amount="5">$5 • Clean water for 1 person</button>
+          <button class="chip" data-amount="30">$30 • For 6 people</button>
+          <button class="chip" data-amount="60">$60 • For 12 people</button>
+          <button class="chip" data-amount="">Custom</button>
+        </div>
+        <div class="input-inline">
+          <label class="sr-only" for="amount">Amount</label>
+          <input id="amount" type="number" min="1" step="1" placeholder="Enter amount (USD)" value="5" />
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" type="email" placeholder="Your email (for receipt)" />
+          <button class="btn primary" id="donateBtn">Give Clean Water Now</button>
+        </div>
+        <p class="muted" style="margin-top:8px">100% of your donation funds clean water projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="container footer-row">
+      <div class="brand" aria-label="Charity: Water">
+        <span class="drop" aria-hidden="true"></span>
+        <span class="tagline">charity: water — bringing clean and safe drinking water to people in need</span>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#about">About</a>
+        <a href="#impact">Impact</a>
+        <a href="#fundraise" id="fundraise">Campus Fundraisers</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="sticky-donate" aria-hidden="false">
+      <div class="container row">
+        <strong>Make an impact today.</strong>
+        <a class="btn" href="#donate" aria-label="Donate sticky">Donate</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const topnav = document.getElementById('topnav');
+    if(toggle && topnav){
+      toggle.addEventListener('click', () => {
+        const isOpen = topnav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
